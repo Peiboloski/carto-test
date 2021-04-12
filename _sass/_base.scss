@@ -43,13 +43,33 @@ a {
     background: $action-color;
 }
 
+@mixin text-hover-underline {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    &:before {
+        content: "";
+        position: absolute;
+        transition: transform 0.3s ease;
+        left: -1px;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: $white-color;
+        transform: translateX(-100%);
+    }
+    &:hover:before {
+        transform: translateX(0);
+    }
+}
+
 button {
     border: none;
     margin: 0;
     padding: 0;
     background: none;
-    border: 0;
     font-family: unset;
+    cursor: pointer;
 }
 
 body {
@@ -78,6 +98,10 @@ body {
         font-size: 15px;
         :not(:last-child) {
             margin-right: 32px;
+        }
+
+        li a {
+            @include text-hover-underline;
         }
 
         @include media-query($width-mobile) {
@@ -138,6 +162,9 @@ body {
         padding: 15px 60px;
         font-size: 15px;
         font-weight: bold;
+        span {
+            @include text-hover-underline;
+        }
     }
 
     @include media-query($width-tablet) {
@@ -288,9 +315,53 @@ body {
             content: "";
             left: 50%;
             top: 50%;
+            transform: translate(-50%, -50%);
             width: 30px;
             height: 30px;
             background-image: url(/assets/Play.svg);
         }
     }
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: $popup-background-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &--closed {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    &--opened {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    &_close-button {
+        position: fixed;
+        right: 40px;
+        top: 40px;
+    }
+}
+
+.video_wrapper {
+    position: relative;
+    padding-bottom: 40%;
+    width: 80%;
+    height: 0;
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

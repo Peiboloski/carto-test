@@ -11,6 +11,7 @@ $font-family: "Karla", sans-serif;
 $white-color: #ffff;
 $black-color: #000000;
 $background-color: #c5ccd5;
+$popup-background-color: hsla(0, 0, 0, 0.8);
 $action-color: #f24440;
 
 // width breakpoints
@@ -32,4 +33,4 @@ $width-laptop: 1024px;
 }
 
 // Import partials from `sass_dir` (defaults to `_sass`)
-@import "base", "layout";
+@import "base";
