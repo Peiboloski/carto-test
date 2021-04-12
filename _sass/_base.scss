@@ -1,0 +1,296 @@
+/**
+ * Reset some basic elements
+ */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+hr,
+dl,
+dd,
+ol,
+ul,
+figure {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+@mixin box-decoration {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 9px;
+    bottom: 9px;
+    right: -9px;
+    z-index: -1;
+    background: $action-color;
+}
+
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+    font-family: unset;
+}
+
+body {
+    font-family: $font-family;
+    color: $black-color;
+    min-height: 100vh;
+    background: $background-color;
+}
+
+.page-content {
+    max-width: $width-laptop;
+    margin: 0 auto;
+    padding: 47px min(8%, 47px);
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: $white-color;
+    &_nav {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        align-items: center;
+        font-size: 15px;
+        :not(:last-child) {
+            margin-right: 32px;
+        }
+
+        @include media-query($width-mobile) {
+            flex-direction: column;
+            align-items: unset;
+            :not(:last-child) {
+                margin-right: 0px;
+                margin-bottom: 8px;
+            }
+        }
+    }
+}
+
+.hero {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    > div {
+        width: 50%;
+    }
+
+    &_title {
+        font-size: 84px;
+        font-weight: bold;
+        line-height: 80px;
+        letter-spacing: -2px;
+        color: $white-color;
+        margin-bottom: 44px;
+        max-width: 90%;
+    }
+
+    &_paragraph {
+        color: $white-color;
+        font-size: 36px;
+        font-weight: bold;
+        letter-spacing: -2px;
+        display: inline-block;
+        position: relative;
+        &:before {
+            position: absolute;
+            right: -15px;
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background: $action-color;
+        }
+    }
+
+    &_button {
+        display: block;
+        margin: 100px 77px 0 auto;
+        background: $action-color;
+        color: white;
+        padding: 15px 60px;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    @include media-query($width-tablet) {
+        flex-direction: column;
+        > div {
+            width: 100%;
+        }
+        &_title {
+            font-size: 50px;
+            line-height: 45px;
+        }
+
+        &_paragraph {
+            font-size: 24px;
+        }
+        &_button {
+            margin: 50px 0 0;
+        }
+    }
+}
+
+.about {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    &_left {
+        width: 40%;
+    }
+
+    &_right {
+        width: 50%;
+        position: relative;
+    }
+
+    @include media-query($width-tablet) {
+        flex-direction: column;
+        &_left {
+            width: 100%;
+        }
+
+        &_right {
+            width: 100%;
+            margin: 0 auto;
+            transform: translateY(30%);
+        }
+    }
+
+    &_main {
+        margin-top: 50px;
+        position: relative;
+        background: $white-color;
+        color: $black-color;
+        font-size: 18px;
+        line-height: 28px;
+        padding: 38px 24px 24px;
+        max-width: 400px;
+        &:before {
+            @include box-decoration;
+        }
+
+        &:after {
+            position: absolute;
+            content: "About";
+            transform: rotate(-90deg);
+            top: 12px;
+            left: -35px;
+            color: $white-color;
+            font-weight: bold;
+            font-size: 15px;
+        }
+    }
+
+    &_quote {
+        margin-top: 50px;
+        color: $white-color;
+        text-align: right;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 36px;
+        margin-left: 20%;
+    }
+
+    &_quote_person {
+        color: $white-color;
+        text-align: right;
+        margin-top: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    &_image-list {
+        :nth-child(1) {
+            > div {
+                transform: translate(20%, -320%);
+            }
+        }
+
+        :nth-child(2) {
+            > div {
+                transform: translate(-10%, -60%);
+            }
+        }
+    }
+
+    &_video-list {
+        :nth-child(1) {
+            > button {
+                transform: translate(0, 20%);
+                z-index: 1;
+            }
+        }
+
+        :nth-child(2) {
+            > button {
+                transform: translate(10%, 40%);
+                z-index: 1;
+            }
+        }
+    }
+
+    &_image-wrapper {
+        display: block;
+        position: relative;
+        width: min(351px, 70%);
+        margin: 0 auto;
+        &::before {
+            @include box-decoration;
+        }
+    }
+
+    &_image {
+        width: 100%;
+        position: relative;
+        display: block;
+    }
+
+    &_video-wrapper {
+        display: block;
+        position: relative;
+        width: min(417px, 90%);
+        margin: 0 auto;
+        &::before {
+            @include box-decoration;
+        }
+        &::after {
+            position: absolute;
+            content: "";
+            left: 50%;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            background-image: url(/assets/Play.svg);
+        }
+    }
+}
