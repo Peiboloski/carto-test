@@ -28,7 +28,7 @@ To build the page, you should have run `bundle install` and `bundle exec jekyll 
 For building the static site, run:
 
 ```bash
- jekyll build
+ bundle exec jekyll build
 ```
 
 After that, you will find the static site in the folder `/_site`
